@@ -27,8 +27,9 @@ app.set('COUNT_TO_SHOW', 10);
 
 app.use('/', routes);
 app.use('/api', function(req, res){
-    httpLib.storeRequest(req, function(){
-        res.send('Success');    
+    httpLib.storeRequest(req, function(err){
+        var resp = (err) ? err : 'success';
+        res.send(resp);    
     })    
 });
 
